@@ -1,0 +1,24 @@
+.header{
+  border: 1px solid;
+  padding: 50px;
+}
+.links{
+  display: inline-block;
+  text-align: right;
+}
+.form{
+  margin : 100px 100px 100px 200px; 
+  float: left;
+  border: 3px ridge;
+  padding: 20px;
+  
+}
+.inputs{
+  padding: 10px;
+  margin: 5px;
+}
+#button{
+  padding: 10px;
+  margin: 5px;
+  width: 200px;
+}
