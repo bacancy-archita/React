@@ -1,0 +1,16 @@
+.topbar{
+    margin : 0;
+  }
+.topbar ul{
+   
+    margin: 0;
+    background-color: aquamarine;
+    width: 1300px;
+    height: 50px;
+}
+
+.topbar ul li {
+    margin:0px;
+    display: inline-block;
+    padding: 10px 0px 0px 40px;
+}

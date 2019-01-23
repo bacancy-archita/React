@@ -1,0 +1,35 @@
+.split {
+    margin-top: 65px;
+    left:0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    
+  }
+  .left {
+    float: left;
+  }
+  .right {
+    margin-left: 165px;
+  }
+  .sidebar-link{
+    padding-bottom: 50px;
+    padding-right: 80px;
+  }
+  .sidebar-ul{
+    height: 475px;
+    border-right: solid 1px;
+    background-color: blanchedalmond;  
+  }
+  
+  .content-header{
+    height: 50px;
+    margin-top: 14px;
+    position: relative;
+    background-color: honeydew;
+    width: 1200px;
+    text-align: center;
+  
+  }
+  

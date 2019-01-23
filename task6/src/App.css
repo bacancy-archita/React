@@ -1,0 +1,48 @@
+body{
+  margin-left: 100px;
+  margin-right : 200px;
+  
+ 
+}
+.table{
+  margin-top: 20px;
+  padding: 25px;
+  width: 90%;
+  border: 2px ridge;
+  justify-content: center;
+  
+}
+.table-col{
+  float: left;
+  width: 23%;
+  text-align: left;
+
+}
+
+.left{
+  float: left;
+  margin-left: 20px;
+
+}
+.right{
+  margin-left: 240px;
+}
+.rows{
+  border: 1.5px ridge;
+  border-top-width: 0px;
+  padding: 15px;
+  width: 92%;
+  column-width: 100px;
+  column-rule: 1px sienna;
+  
+}
+.img{
+  margin-left: 320px;
+}
+.edit {
+  margin-left: 419px;
+}
+a{
+  text-decoration: none;
+  color: black;
+}

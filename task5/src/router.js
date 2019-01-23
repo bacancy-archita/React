@@ -1,15 +1,25 @@
-import React, { Component } from 'react';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import Technical from './technical/technical'
+import Creative from './creative/creative'
+import App from './App'
+import Header from './pages/header';
+import Footer from './pages/footer';
+import Notfound from './notfound';
 
-class Router extends Component{
+const routing = (
+    <Router>
+      <div>
+        <Header />
+        <Switch>
+            <Route exact path="/" component={App} />
+            <Route path="/technical" component={Technical} />
+            <Route path="/creative" component={Creative} />
+            <Route component={Notfound}/>
+        </Switch>
+        <Footer />
+        </div>
+    </Router>
+  )
 
-   routing = () => {
-        return(
-           <Router>
-               <Route />
-           </Router>
-        );
-    }
-
-
-export default Router;
+export default routing;
