@@ -1,45 +1,47 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import Button from './button';
 
-class List extends Component {
+class Table extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			recordList: [],
-			loading: true
-		}
-		this.button2 = this.button2.bind(this);
+			loading : false,
+			currentPage : 1,
+			pageChange : false
 
+		}
+		this.getRecord = this.getRecord.bind(this);
+		this.onClick = this.onClick.bind(this);
 	}
 	componentWillMount() {
-		this.button2()
-	}
-	button2() {
 		this.setState({ loading: true })
+		this.getRecord();
+	}
+	getRecord() {
+		
 
-		fetch('https://reqres.in/api/users?page=2')
+		axios.get(`https://reqres.in/api/users?page=${this.state.currentPage}`)
 			.then(response => {
-				return response.json()
+				return response.data;
 			})
 			.then(response => {
-				console.log(response);
-				this.setState({ recordList: response.data || [], loading: false });
+				console.log(response.data);
+				this.setState({ recordList: response || [], loading: false });
+				
 			})
 			.catch(function (error) {
 				alert("Oops! Something went wrong.");
 			});
-
+	}
+	onClick(e){
+		this.setState({currentPage : e.target.value, pageChange: true}, () => {this.getRecord()})
 	}
 	render() {
 		return (
-			<div >
-				<h3>User CRUD Application</h3><br />
-				<div>
-					<a href='Record list'>Record list |</a>
-					<a href='Record list'> Add Record</a>
-				</div>
-				{/* it will show loading until the data is being displayed */}
+			<div>
 				{this.state.loading ? <p>Please wait...... </p> :
 					<div>
 						<form className='table'>
@@ -50,8 +52,7 @@ class List extends Component {
 								<div className='table-col'>Action</div>
 							</div>
 						</form>
-
-						{this.state.recordList.map((u, i) => {
+						{this.state.recordList.data.map((u, i) => {
 							return <div key={i} className='rows'>
 								<div className='left'> {u.first_name}</div>
 								<div className='right'> {u.last_name}</div>
@@ -60,18 +61,15 @@ class List extends Component {
 								<div className='edit'><a href=''>Edit|</a><a href=''>Delete</a></div>
 							</div>
 						})}
-						<button>1</button>
-						<button >2</button>
-						<button>3</button>
-						<button>4</button>
+						<Button 
+							getPage = {this.state.recordList.total_pages}
+							onClick = {this.onClick}
+							pageNumber = {this.state.recordList.current_page}>
+						</Button>
 					</div>
 				}
-			
 			</div>
-
-
 		);
-
 	}
 }
-export default List;
+export default Table;

@@ -25,7 +25,7 @@ body{
 
 }
 .right{
-  margin-left: 240px;
+  margin-left: 220px;
 }
 .rows{
   border: 1.5px ridge;
@@ -37,10 +37,10 @@ body{
   
 }
 .img{
-  margin-left: 320px;
+  margin-left: 290px;
 }
 .edit {
-  margin-left: 419px;
+  margin-left: 360px;
 }
 a{
   text-decoration: none;
