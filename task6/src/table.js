@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Button from './button';
+import {Route, NavLink } from 'react-router-dom';
+
+
 
 class Table extends Component {
 
@@ -35,7 +38,7 @@ class Table extends Component {
       })
       .then(response => {
 
-        // console.log(response);
+        console.log(response);
         this.setState({ recordList: response || [], loading: false, fetching : false});
 
       })
@@ -51,7 +54,7 @@ class Table extends Component {
     if (this.state.currentPage !== this.state.recordList.page) {
 
       this.getRecord();
-      if (this.state.currentPage == this.state.recordList.page)
+      if (this.state.currentPage === this.state.recordList.page)
         this.setState({fetching: false});
     
     }
@@ -62,6 +65,8 @@ class Table extends Component {
     this.setState({ currentPage: e.target.value }, () => this.fetchData());
   
   }
+
+ 
   render() {
 
     return (
@@ -83,7 +88,10 @@ class Table extends Component {
                 <div className='right'> {u.last_name}</div>
                 <div className='img'><img src={u.avatar} width="50px" height="50px"></img></div>
                 <div className='cols'> {u.action}</div>
-                <div className='edit'><a href=''>Edit|</a><a href=''>Delete</a></div>
+                <div className='edit'>
+                  <NavLink to= {`/list/${i+1}`} >Edit |</NavLink>
+                  <NavLink to=''>Delete</NavLink>
+                </div>
               </div>;
             
             })}
