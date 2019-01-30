@@ -2,8 +2,7 @@ import React from "react";
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import List from "./list";
 import Header from "./header";
-import Add_record from "./addRecord/addRecord";
-import Edit_user from "./editUser.js/editUser";
+import User from "./user/user";
 
 const routing = (
   <Router>
@@ -12,9 +11,8 @@ const routing = (
       <Switch>
         <Route exact path="/" component={List} />
         <Route exact path="/list" component={List} />
-        <Route exact path = '/list/:id' component = {Edit_user} />
-          
-        <Route path="/list/new" component={Add_record} />
+        <Route exact path = '/list/:id' component = {User} />
+        <Route path="/list/new" component={User} />
       </Switch>
     </div>
   </Router>
