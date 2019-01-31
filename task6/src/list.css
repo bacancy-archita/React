@@ -1,0 +1,61 @@
+body{
+    margin-left: 100px;
+    margin-right : 200px;
+  }
+  .table{
+    margin-top: 20px;
+    padding: 25px;
+    width: 90%;
+    border: 2px ridge;
+    justify-content: center;
+  }
+  .table-col{
+    float: left;
+    width: 23%;
+    text-align: left;
+  }
+  
+  .left{
+    float: left;
+    margin-left: 20px;
+  
+  }
+  .right{
+    margin-left: 220px;
+  }
+  .rows{
+    border: 1.5px ridge;
+    border-top-width: 0px;
+    padding: 15px;
+    width: 92%;
+    column-width: 100px;
+    column-rule: 1px sienna;
+  }
+  .img{
+    margin-left: 310px;
+  }
+  .edit {
+    margin-left: 400px;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  .button{
+    margin: 6px 2px 2px 2px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: rgb(231, 227, 227);
+    border: none;
+    
+  }
+  .button:hover{
+    background-color : silver;
+  }
+  
+  .activeButton{
+    background-color: grey;
+    margin: 6px 2px 2px 2px;
+    height: 30px;
+    border-radius: 4px;
+  }

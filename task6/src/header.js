@@ -6,9 +6,9 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <h3>User CRUD application.</h3>
-        <NavLink to='/list' >Record list | </NavLink>
-        <NavLink to='/list/new' >Add Record</NavLink>
+        <div className = 'header'>User CRUD application.</div>
+        <NavLink to='/list' activeClassName= 'active' ><span className='link'>Record list |</span> </NavLink>
+        <NavLink to='/list/new' activeClassName= 'active' ><span className='link'>Add Record</span></NavLink>
       </div>
     );
 

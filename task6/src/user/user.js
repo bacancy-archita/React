@@ -90,7 +90,7 @@ class User extends Component {
     let url = this.props.match.url;
     return (
       <div>
-        {(url) === '/list/new' ? <h3>Add User</h3> : <h3>Edit User</h3>}
+        {(url) === '/list/new' ? <h4>Add User</h4> : <h4>Edit User</h4>}
         <div>
           <form className='form'>
             Name:
@@ -109,7 +109,6 @@ class User extends Component {
             </div>
           </form>
         </div>
-
       </div>
     );
 

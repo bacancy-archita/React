@@ -1,55 +1,14 @@
 body{
   margin-left: 100px;
   margin-right : 200px;
-  
- 
 }
-.table{
-  margin-top: 20px;
-  padding: 25px;
-  width: 90%;
-  border: 2px ridge;
-  justify-content: center;
-  
+.header{
+  font-size: 20px;
+  padding-bottom :20px ;
 }
-.table-col{
-  float: left;
-  width: 23%;
-  text-align: left;
-
+.link{
+  color : gray
 }
-
-.left{
-  float: left;
-  margin-left: 20px;
-
-}
-.right{
-  margin-left: 220px;
-}
-.rows{
-  border: 1.5px ridge;
-  border-top-width: 0px;
-  padding: 15px;
-  width: 92%;
-  column-width: 100px;
-  column-rule: 1px sienna;
-  
-}
-.img{
-  margin-left: 290px;
-}
-.edit {
-  margin-left: 360px;
-}
-a{
-  text-decoration: none;
-  color: black;
-}
-.button{
-  margin: 1px;
-  height: 30px;
-}
-button :hover{
-  color : grey;
+.active{
+  color : red;
 }
