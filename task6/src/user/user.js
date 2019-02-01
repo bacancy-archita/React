@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './user.css';
-import axios from 'axios';
+import { getRecordUpdate, editRecord, addRecord} from '../apiCall';
 import PropTypes from 'prop-types';
 
 class User extends Component {
 
   constructor(props) {
-
     super(props);
     this.state = {
       name: '',
@@ -14,6 +13,7 @@ class User extends Component {
       avatar: '',
       fetching: false,
     };
+    this.getRecord = this.getRecord.bind(this);
     this.addRecord = this.addRecord.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.editRecord = this.editRecord.bind(this);
@@ -28,38 +28,39 @@ class User extends Component {
 
   addRecord(e) {
     e.preventDefault();
-    this.setState({fetching : true});
-    axios.post(`https://reqres.in/api/users`,
-      {
-        name: this.state.name,
-        job: this.state.job,
+    let add = {
+      name: this.state.name,
+      job: this.state.job,
+    };
+    this.setState({ fetching: true });
+    addRecord(add)
+      .then(response => {
+        console.log(response);
+        this.setState({ fetching: false });
       })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .then(() => {
-        this.setState({fetching : false});
-      })
-      .catch(function (error) {
-        alert("something went wrong");
+      .catch(err => {
+        console.log('Error occured while adding user = ', err);
       });
   }
-
   componentDidMount() {
-    if (this.props.match.path !== '/list/new') {
-      axios.get(`https://reqres.in/api/users/${this.props.match.params.id}`)
+    this.getRecord();
+  }
+
+  getRecord() {
+    if (this.props.match.path === '/list/:id') {
+      getRecordUpdate(this.props.match.params.id)
         .then(response => {
-          return response;
-        })
-        .then(response => {
+          console.log('data...', response);
+          console.log(response.data);
+
           this.setState({
-            name: response.data.data.first_name,
-            job: response.data.data.last_name,
-            avatar: response.data.data.avatar,
+            name: response.data.first_name,
+            job: response.data.last_name,
+            avatar: response.data.avatar,
           });
         })
-        .catch(function (error) {
-          console.log(error);
+        .catch(err => {
+          console.log('Error occured while getting data for editing user = ', err);
         });
     }
   }
@@ -71,21 +72,20 @@ class User extends Component {
   }
 
   editRecord(e) {
-
     e.preventDefault();
-    axios.put(`https://reqres.in/api/users/${this.props.match.params.id}`,
-      {
-        name: this.state.name,
-        job: this.state.job,
-      })
-      .then((res) => {
-        console.log(res.data);
+    let update = {
+      name: this.state.name,
+      job: this.state.job,
+    };
+    editRecord(this.props.match.params.id, update)
+      .then((response) => {
+        console.log('edit ', response);
       })
       .catch(err => {
-        alert('oopss! something went wrong');
+        console.log('Error occured while editing user = ', err);
       });
-
   }
+
   render() {
     let url = this.props.match.url;
     return (
@@ -101,8 +101,8 @@ class User extends Component {
               {(url) === '/list/new' ? '' : <img src={this.state.avatar} height='100px' width='100px' alt=''></img>}
             </div>
             <div>
-              {(url) === '/list/new' ? 
-                <button className='button' onClick={this.addRecord}>{this.state.fetching ? 'Please wait...' : 'Submit'}</button>  :
+              {(url) === '/list/new' ?
+                <button className='button' onClick={this.addRecord}>{this.state.fetching ? 'Please wait...' : 'Submit'}</button> :
                 <button className='button' onClick={this.editRecord}>Submit</button>
               }
               <button className='button'>Cancel</button>
@@ -111,11 +111,75 @@ class User extends Component {
         </div>
       </div>
     );
-
   }
-
 }
+
+
 User.propTypes = {
-  match : PropTypes.object,
-}; 
+  match: PropTypes.object,
+};
+
 export default User;
+
+/* ---------------------fetching data for edit record---------------------------*/
+
+
+/*
+if (this.props.match.path !== '/list/new') {
+  axios.get(`https://reqres.in/api/users/${this.props.match.params.id}`)
+    .then(response => {
+      return response;
+    })
+    .then(response => {
+      this.setState({
+        name: response.data.data.first_name,
+        job: response.data.data.last_name,
+        avatar: response.data.data.avatar,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+*/
+
+
+/* ---------------------editing data for edit record---------------------------*/
+
+
+/*
+axios.put(`https://reqres.in/api/users/${this.props.match.params.id}`,
+  {
+    name: this.state.name,
+    job: this.state.job,
+  })
+  .then((res) => {
+    console.log(res.data);
+  })
+  .catch(err => {
+    alert('oopss! something went wrong');
+  });
+*/
+
+
+/* ---------------------adding data for add record---------------------------*/
+
+
+/*
+  this.setState({ fetching: true });
+    axios.post(`https://reqres.in/api/users`,
+      {
+        name: this.state.name,
+        job: this.state.job,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .then(() => {
+        this.setState({ fetching: false });
+      })
+      .catch(function (error) {
+        alert("something went wrong");
+      });
+  }
+*/

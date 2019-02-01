@@ -49,7 +49,7 @@ body{
     border: none;
     
   }
-  .button:hover{
+  .button :hover{
     background-color : silver;
   }
   

@@ -7,8 +7,8 @@ class Header extends Component {
     return (
       <div>
         <div className = 'header'>User CRUD application.</div>
-        <NavLink to='/list' activeClassName= 'active' ><span className='link'>Record list |</span> </NavLink>
-        <NavLink to='/list/new' activeClassName= 'active' ><span className='link'>Add Record</span></NavLink>
+        <NavLink to='/list' className= 'link' ><span>Record list |</span> </NavLink>
+        <NavLink to='/list/new' className= 'link' ><span>Add Record</span></NavLink>
       </div>
     );
 

@@ -7,8 +7,8 @@ body{
   padding-bottom :20px ;
 }
 .link{
-  color : gray
+  color : black
 }
-.active{
-  color : red;
+link :active{
+  color : black
 }
