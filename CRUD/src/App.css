@@ -1,0 +1,14 @@
+body{
+  margin-left: 100px;
+  margin-right : 200px;
+}
+.header{
+  font-size: 20px;
+  padding-bottom :20px ;
+}
+.link{
+  color : black
+}
+link :active{
+  color : black
+}
